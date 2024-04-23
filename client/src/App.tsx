@@ -3,7 +3,7 @@ import { router } from "./router/router"
 import { useAppDispatch } from "./store/hooks"
 import { getTokenFromLocalStorage } from "./helpers/localstorage.helper"
 import { AuthService } from "./services/auth.service"
-import { logout } from "./store/user/userSlice"
+import { login, logout } from "./store/user/userSlice"
 import { useEffect } from "react"
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       if(token) {
         const data = await AuthService.getProfile()
         if(data) {
-          dispatch(login (data))
+          dispatch(login(data))
         } else {
           dispatch(logout())
         }
